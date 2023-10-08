@@ -5,7 +5,7 @@ body {
   background: rgb(3, 245, 245);
   transition: 1s all ease-out;
 }
-form {
+.form-style {
   padding: 3em;
   background-color: rgba(0, 125, 235, 0.568);
   max-width: 20em;

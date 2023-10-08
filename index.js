@@ -11,22 +11,38 @@ let storage = [];
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   let inputs = this.getElementsByTagName("input");
+  let index = 0;
+  index+=1;
   storage.push({
     fullname: inputs[0].value,
     email: inputs[1].value,
     age: inputs[2].value,
+    id: getIndex(),
   });
+  function getIndex() {
+    let index = 0;
+    index+=1;
+    return index;
+  };
+  
   let customerInfo = storage[storage.length-1];
   output.innerHTML += `
     <tr>
     <td>${customerInfo.fullname}</td>
     <td>${customerInfo.email}</td>
     <td>${customerInfo.age}</td>
+    <td>${customerInfo.id}</td>
     <td>
     <button class="btn btn-danger btn-sm" onclick= handleDelete(this)>
     <i class="bi bi-trash-fill"></i>
     <i class="bi bi-3-circle"></i>
     </button>
+    </td>
+    <td>
+    <a href="./form.html" class="btn btn-primary btn-sm" onclick= modifyInputs(this)>
+    <i class="bi bi-pencil-square"></i>
+    <i class="bi bi-3-circle"></i>
+    </a>
     </td>
     </tr>
     `;
@@ -91,6 +107,9 @@ function handleDelete (arg) {
   console.log(td.parentNode);
   td.parentNode.remove();
 }
+function modifyInputs (par) {
+
+}
 // add a button called modify when it is clicked it open a new page with a form filled with the information  to modify 
 // the info will be updated\
 let body = document.getElementById("body");
@@ -108,3 +127,6 @@ setInterval(
     body.style.backgroundColor = "#" + color;
   }, 3000)
   console.log(Math.random()*16777215);
+
+
+
